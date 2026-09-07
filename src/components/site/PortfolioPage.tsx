@@ -10,6 +10,8 @@ import SkillsSection from "./SkillsSection";
 import WorksSection from "./WorksSection";
 import WritingSection from "./WritingSection";
 import ReadingSection from "./ReadingSection";
+import ValuesSection from "./ValuesSection";
+import HobbiesSection from "./HobbiesSection";
 import ContactSection from "./ContactSection";
 import Footer from "./Footer";
 
@@ -28,6 +30,8 @@ export default function PortfolioPage() {
         <WorksSection />
         <WritingSection />
         <ReadingSection />
+        <ValuesSection />
+        <HobbiesSection />
         <ContactSection />
         <Footer />
       </main>

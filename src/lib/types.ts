@@ -66,6 +66,22 @@ export interface ReadingItem {
   title?: string;
   note?: Localized;
   hint?: Localized;
+  /** Link to the book (publisher page, store, Zenn book, etc.) */
+  url?: string;
+  /** Cover image — a full URL, or a local path such as "/covers/xxx.jpg" */
+  coverUrl?: string;
+}
+
+export interface ValueItem {
+  title: Localized;
+  text: Localized;
+}
+
+export interface HobbyItem {
+  placeholder?: boolean;
+  title?: Localized;
+  text?: Localized;
+  hint?: Localized;
 }
 
 export interface EducationItem {
@@ -114,6 +130,14 @@ export interface Profile {
   reading: {
     note: Localized;
     items: ReadingItem[];
+  };
+  values: {
+    note: Localized;
+    items: ValueItem[];
+  };
+  hobbies: {
+    note: Localized;
+    items: HobbyItem[];
   };
   education: EducationItem[];
   certifications: CertificationItem[];

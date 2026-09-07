@@ -216,6 +216,9 @@ const profile: Profile = {
     ],
   },
 
+  // ── 読んでいるもの ───────────────────────────────────
+  // title / note に加えて、url（本のリンク）・coverUrl（表紙画像。外部URL
+  // でも public/covers/xxx.jpg のようなローカルパスでもOK）を書けます。
   reading: {
     note: {
       ja: "読んでいるもの、考えていること。技術書だけではなく。",
@@ -225,6 +228,44 @@ const profile: Profile = {
       { placeholder: true, hint: { ja: "いま読んでいる本", en: "Currently reading" } },
       { placeholder: true, hint: { ja: "何度も戻る一冊", en: "The one I keep returning to" } },
       { placeholder: true, hint: { ja: "技術以外の興味", en: "A non-technical interest" } },
+    ],
+  },
+
+  // ── 大事にしていること ─────────────────────────────
+  // 仕事に対する価値観・スタンス。title は短く、text で少し説明する形。
+  // placeholder ではなく最初から3つ埋めてあるので、内容を書き換えてください。
+  values: {
+    note: {
+      ja: "働くうえで大事にしていること。",
+      en: "What guides how I work.",
+    },
+    items: [
+      {
+        title: { ja: "ここに価値観のタイトルを", en: "A value, in a few words" },
+        text: { ja: "その価値観について、1〜2文で説明を書きます。", en: "One or two sentences on what that means in practice." },
+      },
+      {
+        title: { ja: "ここに価値観のタイトルを", en: "A value, in a few words" },
+        text: { ja: "その価値観について、1〜2文で説明を書きます。", en: "One or two sentences on what that means in practice." },
+      },
+      {
+        title: { ja: "ここに価値観のタイトルを", en: "A value, in a few words" },
+        text: { ja: "その価値観について、1〜2文で説明を書きます。", en: "One or two sentences on what that means in practice." },
+      },
+    ],
+  },
+
+  // ── 趣味・関心 ───────────────────────────────────────
+  // text は無くてもOK（title だけでも表示されます）。
+  hobbies: {
+    note: {
+      ja: "仕事以外の時間について。",
+      en: "Outside of work.",
+    },
+    items: [
+      { placeholder: true, hint: { ja: "趣味・好きなこと 1", en: "Hobby / interest 1" } },
+      { placeholder: true, hint: { ja: "趣味・好きなこと 2", en: "Hobby / interest 2" } },
+      { placeholder: true, hint: { ja: "趣味・好きなこと 3", en: "Hobby / interest 3" } },
     ],
   },
 
