@@ -2,12 +2,15 @@
 
 宮澤知輝の自己紹介サイト。Next.js (App Router) + TypeScript。
 
+デザインは "Blueprint"（図面セット）。ページは 01〜09 の番号つき「シート」で、`/`（Index）・`/now`・`/career`・`/works`・`/writing`・`/reading`・`/values`・`/interests`・`/contact`。EN（既定）/ JA は `lang` Cookie で保持。`/writing` は Zenn の RSS から自動取得（1時間キャッシュ）。
+
 ## 編集するのはここだけ
 
 **`src/data/profile.ts`** — 名前・経歴・スキル・制作物・Zenn 記事・読書メモなど、サイトと職務経歴書 PDF の両方がこの 1 ファイルを参照している。ここを編集するだけで両方が更新される。
 
-- `works`（制作物）と `articles.items`（Zenn 記事）は `placeholder: true` の枠が最初から入っている。埋めるときは `placeholder` を消して `title` / `blurb` / `stack` / `url` などを書く。
-- ポートレート写真は `public/portrait.jpg` を置くだけで表示される（ファイルが無ければ自動でプレースホルダー表示になる）。
+- `works`（制作物）は `problem` → `approach` がキャプションになる。スクリーンショットは `public/works/` に置いて `image` に指定。
+- `reading` は `placeholder: true` の枠が入っている。埋めるときは `placeholder` を消して `title` / `note` / `url` / `coverUrl` を書く。
+- `hobbies` の `specs[].value` を埋めると Details シートの「—」が置き換わる。`values` の3項目は下書き。
 
 ## 職務経歴書 PDF
 

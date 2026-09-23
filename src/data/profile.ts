@@ -16,6 +16,17 @@ const profile: Profile = {
       ja: "設計から運用まで、ひとりで通せるフルスタック。いまはAIエージェントとRAGを実務に落とし込んでいます。",
       en: "Full-stack from architecture to operations. Currently putting AI agents and RAG into real production systems.",
     },
+    lead: {
+      ja: "フルスタックエンジニア。金融ドメインからクラウドまで。",
+      en: "Full-stack engineer — from the finance domain down to the cloud.",
+    },
+    annotations: [
+      { title: { ja: "リテール営業からのキャリア", en: "Started in retail sales" }, text: { ja: "コードの前に業務を読む", en: "reads the business before the code" } },
+      { title: { ja: "UI/UX 設計から実装まで", en: "UI/UX, design to build" }, text: { ja: "デザインシステム → コンポーネント", en: "design system → components" } },
+      { title: { ja: "API 設計 · OIDC / Entra ID", en: "API design · OIDC / Entra ID" }, text: { ja: "契約を先に決める", en: "contracts first" } },
+      { title: { ja: "スキーマ設計 · NoSQL 運用", en: "Schema design · NoSQL in prod" }, text: { ja: "クエリから逆算する", en: "shape data for the query" } },
+      { title: { ja: "マルチクラウド · IaC · CI/CD", en: "Multi-cloud · IaC · CI/CD" }, text: { ja: "コストを意識した構成", en: "cost-aware architecture" } },
+    ],
     summary: {
       ja: "TypeScript / React / Next.js のフロントエンド、Python / FastAPI のバックエンド、AWS・Azure・GCP のマルチクラウド、Terraform と GitHub Actions による CI/CD まで、一貫して設計・実装・運用を担ってきました。AI 関連では RAG システムの実装やアーキテクチャ設計フェーズから関与し、技術リードも担当。金融ドメイン（証券リテール営業、銀行業務システム）の実務経験を、そのままプロダクト設計に持ち込めます。",
       en: "I design, build and operate systems end to end — TypeScript / React / Next.js on the front, Python / FastAPI behind it, across AWS, Azure and GCP, with Terraform and GitHub Actions carrying the delivery. On AI work I join from the architecture phase, implement RAG systems, and lead technically. A background in finance — securities retail sales, then bank trading systems — comes with me into product decisions.",
@@ -56,6 +67,9 @@ const profile: Profile = {
 
   career: [
     {
+      orgShort: "Japan Digital Design",
+      roleShort: { ja: "フルスタック — 銀行向け業務ツール", en: "Full-stack — trading tools for banking" },
+      kind: "now",
       org: { ja: "Japan Digital Design 株式会社", en: "Japan Digital Design, Inc." },
       employment: { ja: "正社員", en: "Full-time" },
       title: { ja: "Software Developer / フルスタックエンジニア", en: "Software Developer / Full-stack Engineer" },
@@ -77,6 +91,9 @@ const profile: Profile = {
       stack: ["AWS", "Docker", "Next.js", "TypeScript", "FastAPI", "Python", "DocumentDB", "DynamoDB", "GitHub Actions", "Claude", "Codex", "Databricks"],
     },
     {
+      orgShort: "AlphaVision",
+      roleShort: { ja: "フルスタック — AI Agent プロダクト立ち上げ", en: "Full-stack — AI agent product, 0 → 1" },
+      kind: "side",
       org: { ja: "株式会社 AlphaVision", en: "AlphaVision, Inc." },
       employment: { ja: "業務委託／副業", en: "Contract / side work" },
       title: { ja: "Software Developer / フルスタックエンジニア（AI Agent プロジェクト）", en: "Software Developer / Full-stack Engineer (AI Agent project)" },
@@ -95,6 +112,9 @@ const profile: Profile = {
       stack: ["TypeScript", "Next.js", "GCP", "Terraform", "Docker", "Prisma", "GitHub Actions"],
     },
     {
+      orgShort: "AIFUL",
+      roleShort: { ja: "フルスタック — 社内 RAG チャット 技術リード", en: "Full-stack — internal RAG chat, tech lead" },
+      kind: "ft",
       org: { ja: "アイフル株式会社", en: "Aiful Corporation" },
       employment: { ja: "正社員", en: "Full-time" },
       title: { ja: "Software Developer / フルスタックエンジニア", en: "Software Developer / Full-stack Engineer" },
@@ -114,6 +134,9 @@ const profile: Profile = {
       stack: ["Azure App Service", "AWS", "Docker", "Next.js", "TypeScript", "FastAPI", "Python", "Entra ID", "OIDC", "MongoDB", "GitHub Actions"],
     },
     {
+      orgShort: "DMM 生成AI CAMP",
+      roleShort: { ja: "メンター — AI エンジニア講座", en: "Mentor — AI engineering curriculum" },
+      kind: "side",
       org: { ja: "DMM 生成 AI CAMP", en: "DMM Generative AI CAMP" },
       employment: { ja: "業務委託／副業", en: "Contract / side work" },
       title: { ja: "AI エンジニア カリキュラムメンター", en: "AI Engineering Curriculum Mentor" },
@@ -131,6 +154,9 @@ const profile: Profile = {
       stack: ["RAG", "LangChain"],
     },
     {
+      orgShort: "Ambient Lab",
+      roleShort: { ja: "フルスタック — 人事管理システム", en: "Full-stack — HR management system" },
+      kind: "side",
       org: { ja: "Ambient Lab 株式会社", en: "Ambient Lab, Inc." },
       employment: { ja: "業務委託／副業", en: "Contract / side work" },
       title: { ja: "Software Developer / フルスタックエンジニア", en: "Software Developer / Full-stack Engineer" },
@@ -148,6 +174,9 @@ const profile: Profile = {
       stack: [],
     },
     {
+      orgShort: "NRI",
+      roleShort: { ja: "サポートエンジニア — PM・設計レビュー支援", en: "Support engineer — PM, spec reviews" },
+      kind: "side",
       org: { ja: "株式会社野村総合研究所（NRI）", en: "Nomura Research Institute (NRI)" },
       employment: { ja: "業務委託", en: "Contract" },
       title: { ja: "サポートエンジニア", en: "Support Engineer" },
@@ -165,6 +194,9 @@ const profile: Profile = {
       stack: ["JIRA"],
     },
     {
+      orgShort: "Nomura Securities",
+      roleShort: { ja: "リテール営業 — 金融ドメインの原点", en: "Retail sales — where the domain knowledge comes from" },
+      kind: "sales",
       org: { ja: "野村證券株式会社", en: "Nomura Securities Co., Ltd." },
       employment: { ja: "正社員", en: "Full-time" },
       title: { ja: "リテール営業", en: "Retail Sales" },
@@ -193,15 +225,77 @@ const profile: Profile = {
     { group: { ja: "ドメイン知識", en: "Domain knowledge" }, items: ["証券リテール営業", "銀行業務システム", "人事管理"] },
   ],
 
-  // ── 制作物 ─────────────────────────────────────────
-  // placeholder: true のものは「未入力」の枠として表示されます。
-  // 埋めるときは placeholder を消して、title / blurb / stack / url を書いてください。
+  // ── 制作物（Figures シート）──────────────────────────
+  // problem → approach がキャプションになります。image は public/ 以下のパス。
+  // 公開URLが無いものは url の代わりに note を書くと表示されます。
   works: [
-    { placeholder: true, slot: { ja: "制作物 1 — 一番見せたいもの", en: "Work 1 — the one you most want seen" }, hint: { ja: "スクリーンショット + 何を解いたか", en: "Screenshot + the problem it solves" } },
-    { placeholder: true, slot: { ja: "制作物 2", en: "Work 2" }, hint: { ja: "OSS / ライブラリ", en: "OSS / library" } },
-    { placeholder: true, slot: { ja: "制作物 3", en: "Work 3" }, hint: { ja: "個人開発サービス", en: "Personal product" } },
-    { placeholder: true, slot: { ja: "制作物 4", en: "Work 4" }, hint: { ja: "AI / RAG の実験", en: "AI / RAG experiment" } },
-    { placeholder: true, slot: { ja: "制作物 5", en: "Work 5" }, hint: { ja: "小さなツール・CLI", en: "Small tool / CLI" } },
+    {
+      title: "ReSwing",
+      kind: { ja: "PWA · ゴルフ · AI", en: "PWA · GOLF · AI" },
+      year: "2026",
+      problem: {
+        ja: "ゴルフ初心者は、レッスンで言われたことを次の練習までに忘れてしまう。",
+        en: "Beginner golfers forget what the coach said by the next session.",
+      },
+      approach: {
+        ja: "打つ前に「今日の一点」を表示。ラウンド・練習・レッスンを最小操作で記録し、AI がノートから繰り返し指摘されている要点を根拠つきで抽出する。",
+        en: "Shows one focus point before each swing, logs rounds, range sessions and lessons in a few taps, and has AI pull the recurring advice out of lesson notes — with the source notes cited.",
+      },
+      image: "/works/reswing.jpg",
+      url: "https://reswing.vercel.app",
+      urlLabel: "LIVE",
+      stack: ["Next.js", "TypeScript", "Supabase", "Gemini", "PWA", "Vitest"],
+    },
+    {
+      title: "ReSurf",
+      kind: { ja: "PWA · サーフィン · AI", en: "PWA · SURF · AI" },
+      year: "2026",
+      problem: {
+        ja: "海から上がると、何を意識して何ができたかをすぐに忘れる。",
+        en: "Out of the water, beginner surfers lose track of what they worked on and what clicked.",
+      },
+      approach: {
+        ja: "入水前に意識する一点を表示し、海上がりに音声で話すだけで AI が構造化してログに残す。波・風・潮は自動取得、オフラインでも記録して復帰時に同期。",
+        en: "One focus point before paddling out; after the session, just talk and AI structures it into a log. Wave, wind and tide are fetched automatically, and it records offline and syncs later.",
+      },
+      image: "/works/resurf.jpg",
+      url: "https://resurf-two.vercel.app",
+      urlLabel: "LIVE",
+      stack: ["Next.js", "TypeScript", "Supabase", "Gemini", "PWA", "Monorepo"],
+    },
+    {
+      title: "Morning Bytes",
+      kind: { ja: "デイリーダイジェスト · LLM", en: "DAILY DIGEST · LLM" },
+      year: "2026",
+      problem: {
+        ja: "海外と国内のテックニュースを、毎朝あちこち巡回して読むのは時間がかかる。",
+        en: "Keeping up with tech news across a dozen English and Japanese sources eats every morning.",
+      },
+      approach: {
+        ja: "19 ソースを取得し、LLM が 9 カテゴリの朝刊スタイルで日本語に編集。ボタンを押したときだけ生成するので、読まない日のコストはゼロ。",
+        en: "Pulls 19 feeds and has an LLM edit them into a Japanese broadsheet across nine sections. It only generates when you press refresh, so days you don't read cost nothing.",
+      },
+      image: "/works/bytes.jpg",
+      note: { ja: "個人利用 · 非公開", en: "PERSONAL USE · PRIVATE" },
+      stack: ["Next.js", "Gemini", "Claude", "Upstash Redis", "Zod", "Vercel"],
+    },
+    {
+      title: { ja: "からだログ", en: "Karada Log" },
+      kind: { ja: "LINE ボット · コーチング支援", en: "LINE BOT · COACHING" },
+      year: "2026",
+      problem: {
+        ja: "LINE での個別トレーニング指導は、体重や食事の記録・計算にコーチの時間が取られる。",
+        en: "Coaching a client over LINE means the coach spends their time logging weights and adding up calories.",
+      },
+      approach: {
+        ja: "記録・集計・カロリー概算は LINE ボットと画像解析 AI に任せ、評価とアドバイスはコーチが行う。コーチ専用ダッシュボードつき。",
+        en: "A LINE bot and vision AI handle the logging, totals and calorie estimates; judgement and advice stay with the coach, who gets a dashboard of their own.",
+      },
+      image: "/works/karadalog.jpg",
+      url: "https://karadalog-lp.vercel.app",
+      urlLabel: "LP",
+      stack: ["Next.js", "Supabase", "LINE Messaging API", "Gemini Vision", "Vercel Cron", "Tailwind CSS"],
+    },
   ],
 
   // ── Zenn 記事 ───────────────────────────────────────
@@ -225,9 +319,9 @@ const profile: Profile = {
       en: "What I'm reading and thinking about — not only technical books.",
     },
     items: [
-      { placeholder: true, hint: { ja: "いま読んでいる本", en: "Currently reading" } },
-      { placeholder: true, hint: { ja: "何度も戻る一冊", en: "The one I keep returning to" } },
-      { placeholder: true, hint: { ja: "技術以外の興味", en: "A non-technical interest" } },
+      { placeholder: true, label: { ja: "いま読んでいる", en: "NOW READING" }, hint: { ja: "なぜ今これか。", en: "Why this, now." } },
+      { placeholder: true, label: { ja: "何度も戻る一冊", en: "KEEP RETURNING TO" }, hint: { ja: "何が変わったか。", en: "What it changed." } },
+      { placeholder: true, label: { ja: "技術以外", en: "BEYOND TECH" }, hint: { ja: "スタックの外側。", en: "Outside the stack." } },
     ],
   },
 
@@ -241,31 +335,53 @@ const profile: Profile = {
     },
     items: [
       {
-        title: { ja: "ここに価値観のタイトルを", en: "A value, in a few words" },
-        text: { ja: "その価値観について、1〜2文で説明を書きます。", en: "One or two sentences on what that means in practice." },
+        title: { ja: "コードの前に業務", en: "Domain before code" },
+        text: { ja: "何を作るかの前に、業務が実際にどう回っているかを理解する。営業時代に身についた感覚です。", en: "Understand how the business actually runs before deciding what to build. Sales taught me that." },
       },
       {
-        title: { ja: "ここに価値観のタイトルを", en: "A value, in a few words" },
-        text: { ja: "その価値観について、1〜2文で説明を書きます。", en: "One or two sentences on what that means in practice." },
+        title: { ja: "最後まで持つ", en: "Own it end to end" },
+        text: { ja: "スキーマから本番まで通し、リリース後に起きることまで引き受ける。", en: "Carry a feature from schema to production and stay for what happens after launch." },
       },
       {
-        title: { ja: "ここに価値観のタイトルを", en: "A value, in a few words" },
-        text: { ja: "その価値観について、1〜2文で説明を書きます。", en: "One or two sentences on what that means in practice." },
+        title: { ja: "測ってから最適化", en: "Measure, then optimize" },
+        text: { ja: "評価とコストは後付けではなく、設計の一部として扱う。", en: "Evaluation and cost are part of the design, not an afterthought." },
       },
     ],
   },
 
-  // ── 趣味・関心 ───────────────────────────────────────
-  // text は無くてもOK（title だけでも表示されます）。
+  // ── 趣味・関心（Details シート）────────────────────────
+  // drawing は線画の種類（surf / gym / golf / coffee）。specs の value を
+  // 埋めると表の「—」が置き換わります。
   hobbies: {
     note: {
       ja: "仕事以外の時間について。",
       en: "Outside of work.",
     },
     items: [
-      { placeholder: true, hint: { ja: "趣味・好きなこと 1", en: "Hobby / interest 1" } },
-      { placeholder: true, hint: { ja: "趣味・好きなこと 2", en: "Hobby / interest 2" } },
-      { placeholder: true, hint: { ja: "趣味・好きなこと 3", en: "Hobby / interest 3" } },
+      {
+        drawing: "surf",
+        title: { ja: "サーフィン", en: "Surfing" },
+        text: { ja: "波を読んで、乗ると決める。", en: "Read the conditions, then commit." },
+        specs: [{ label: "HOME BREAK", value: "" }, { label: "BOARD", value: "" }],
+      },
+      {
+        drawing: "gym",
+        title: { ja: "筋トレ", en: "Training" },
+        text: { ja: "少しずつ負荷を上げて、記録する。", en: "Progressive overload, logged." },
+        specs: [{ label: "SPLIT", value: "" }, { label: "BIG 3 TOTAL", value: "" }],
+      },
+      {
+        drawing: "golf",
+        title: { ja: "ゴルフ", en: "Golf" },
+        text: { ja: "小さな調整を積み重ねる長いゲーム。", en: "A long game of small adjustments." },
+        specs: [{ label: "AVERAGE", value: "" }, { label: "BEST", value: "" }],
+      },
+      {
+        drawing: "coffee",
+        title: { ja: "コーヒー", en: "Coffee" },
+        text: { ja: "比率・挽き目・湯温を詰める。", en: "Dial in ratio, grind and temperature." },
+        specs: [{ label: "METHOD", value: "" }, { label: "BEANS", value: "" }],
+      },
     ],
   },
 

@@ -24,7 +24,15 @@ export interface CareerBullet {
   en: string;
 }
 
+/** Timeline row style on the Elevation sheet. */
+export type CareerKind = "now" | "ft" | "side" | "sales";
+
 export interface CareerItem {
+  /** Short org name for the Elevation list, e.g. "AIFUL". */
+  orgShort: string;
+  /** One-line role for the Elevation list. */
+  roleShort: Localized;
+  kind: CareerKind;
   org: Localized;
   employment: Localized;
   title: Localized;
@@ -45,9 +53,21 @@ export interface SkillGroup {
 export interface WorkItem {
   placeholder?: boolean;
   title?: Localized;
-  blurb?: Localized;
+  /** Mono sub-label, e.g. "PWA · GOLF". */
+  kind?: Localized;
+  /** What problem it solves. */
+  problem?: Localized;
+  /** How it solves it. */
+  approach?: Localized;
+  /** Screenshot — a local path such as "/works/xxx.jpg". */
+  image?: string;
   url?: string;
+  /** Label for the link, e.g. "LIVE" or "LP". */
+  urlLabel?: string;
+  /** Shown instead of a link when the project isn't public. */
+  note?: Localized;
   stack?: string[];
+  year?: string;
   slot?: Localized;
   hint?: Localized;
 }
@@ -63,6 +83,8 @@ export interface ArticleItem {
 
 export interface ReadingItem {
   placeholder?: boolean;
+  /** Mono label above the cover, e.g. "NOW READING". */
+  label?: Localized;
   title?: string;
   note?: Localized;
   hint?: Localized;
@@ -77,11 +99,14 @@ export interface ValueItem {
   text: Localized;
 }
 
+export type HobbyDrawing = "surf" | "gym" | "golf" | "coffee";
+
 export interface HobbyItem {
-  placeholder?: boolean;
-  title?: Localized;
-  text?: Localized;
-  hint?: Localized;
+  drawing: HobbyDrawing;
+  title: Localized;
+  text: Localized;
+  /** Two-column spec table; value "" renders as an em dash. */
+  specs: { label: string; value: Localized }[];
 }
 
 export interface EducationItem {
@@ -105,6 +130,10 @@ export interface ProfileMeta {
   /** Year the engineering career started — used to compute years of experience. */
   since: number;
   tagline: Localized;
+  /** Hero lead line on the Blueprint home page. */
+  lead: Localized;
+  /** Hero drawing annotations A–E (title / description). */
+  annotations: { title: Localized; text: Localized }[];
   summary: Localized;
   links: LinkItem[];
   contact: {

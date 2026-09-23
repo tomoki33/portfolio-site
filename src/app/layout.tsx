@@ -1,63 +1,41 @@
 import type { Metadata } from "next";
-import {
-  Cormorant_Garamond,
-  Lora,
-  Shippori_Mincho_B1,
-  Zen_Old_Mincho,
-} from "next/font/google";
+import { cookies } from "next/headers";
+import { Geist, Geist_Mono, Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.css";
 import profile from "@/data/profile";
-import { pick } from "@/lib/i18n";
+import { LANG_COOKIE, pick } from "@/lib/i18n";
+import type { Lang } from "@/lib/types";
 import { LangProvider } from "@/components/LangContext";
+import Nav from "@/components/site/Nav";
+import Footer from "@/components/site/Footer";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
-});
+const geist = Geist({ variable: "--font-geist", subsets: ["latin"], weight: ["300", "400", "500"] });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], weight: ["400", "500"] });
+const zenKaku = Zen_Kaku_Gothic_New({ variable: "--font-zen-kaku", subsets: ["latin"], weight: ["400", "500"] });
 
-const lora = Lora({
-  variable: "--font-lora",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-});
-
-const shipporiMincho = Shippori_Mincho_B1({
-  variable: "--font-shippori-mincho",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
-
-const zenOldMincho = Zen_Old_Mincho({
-  variable: "--font-zen-old-mincho",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
-
-const siteName = `${profile.meta.name.ja} / ${profile.meta.nameRoman}`;
-const roleJa = pick(profile.meta.role, "ja");
-const taglineJa = pick(profile.meta.tagline, "ja");
+const siteName = `${profile.meta.name.en} / ${profile.meta.name.ja}`;
+const lead = pick(profile.meta.lead, "en");
 
 export const metadata: Metadata = {
-  title: `${siteName} — ${roleJa}`,
-  description: taglineJa,
-  openGraph: {
-    title: siteName,
-    description: taglineJa,
-    type: "profile",
-  },
+  title: { default: `${siteName} — ${pick(profile.meta.role, "en")}`, template: `%s — ${profile.meta.name.en}` },
+  description: lead,
+  openGraph: { title: siteName, description: lead, type: "profile" },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const cookieLang = (await cookies()).get(LANG_COOKIE)?.value;
+  const lang: Lang = cookieLang === "ja" ? "ja" : "en";
+
   return (
-    <html
-      lang="ja"
-      className={`${cormorant.variable} ${lora.variable} ${shipporiMincho.variable} ${zenOldMincho.variable}`}
-    >
+    <html lang={lang} className={`${geist.variable} ${geistMono.variable} ${zenKaku.variable}`}>
       <body>
-        <LangProvider defaultLang="ja">{children}</LangProvider>
+        <LangProvider defaultLang={lang}>
+          <Nav />
+          <main className="container">
+            {children}
+            <Footer />
+          </main>
+        </LangProvider>
       </body>
     </html>
   );

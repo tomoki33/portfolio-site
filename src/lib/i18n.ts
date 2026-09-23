@@ -7,105 +7,57 @@ export function pick(value: Localized | null | undefined, lang: Lang): string {
   return value[lang] ?? value.ja ?? value.en ?? "";
 }
 
-/** "YYYY-MM" -> "YYYY.MM" (site) or "YYYY年M月" (résumé, handled separately). */
+/** "YYYY-MM" -> "YYYY.MM" */
 export function ym(s: string | null | undefined): string {
   if (!s) return "";
   const [y, m] = s.split("-");
   return `${y}.${m}`;
 }
 
+export const LANG_COOKIE = "lang";
+
+/**
+ * The drawing set. Titles stay English in both languages (they are drawing
+ * labels); only the sub-label and preview switch.
+ */
+export const SHEETS = [
+  { key: "now", href: "/now", title: "In progress", sub: { en: "NOW", ja: "いま" }, preview: { en: "What I am building this quarter.", ja: "いま取り組んでいること。" }, flag: "★ LIVE" },
+  { key: "career", href: "/career", title: "Elevation", sub: { en: "CAREER", ja: "経歴" }, preview: { en: "Retail sales → full-stack engineering.", ja: "営業 → フルスタックエンジニア。" }, flag: "" },
+  { key: "works", href: "/works", title: "Figures", sub: { en: "WORKS", ja: "制作物" }, preview: { en: "ReSwing, ReSurf, Morning Bytes, Karada Log.", ja: "ReSwing・ReSurf・Morning Bytes・からだログ。" }, flag: "" },
+  { key: "writing", href: "/writing", title: "Notes", sub: { en: "WRITING", ja: "書いたもの" }, preview: { en: "Articles on Zenn.", ja: "Zenn の記事。" }, flag: "" },
+  { key: "reading", href: "/reading", title: "Materials", sub: { en: "READING", ja: "読んでいるもの" }, preview: { en: "Books that shaped how I work.", ja: "考え方をつくった本。" }, flag: "" },
+  { key: "values", href: "/values", title: "Specifications", sub: { en: "VALUES", ja: "価値観" }, preview: { en: "How I work, in three specs.", ja: "働き方を3つの仕様で。" }, flag: "" },
+  { key: "interests", href: "/interests", title: "Details", sub: { en: "INTERESTS", ja: "趣味・関心" }, preview: { en: "Surf, lift, golf, coffee.", ja: "サーフィン・筋トレ・ゴルフ・コーヒー。" }, flag: "" },
+  { key: "contact", href: "/contact", title: "Contact", sub: { en: "CONTACT", ja: "連絡" }, preview: { en: "Contract work, chats, shop talk.", ja: "業務委託・カジュアル面談など。" }, flag: "" },
+] as const;
+
+export type SheetKey = (typeof SHEETS)[number]["key"];
+
+export const NAV_KEYS: SheetKey[] = ["career", "works", "writing", "reading", "values", "contact"];
+
+/** "02" for index 0 (home is sheet 01). */
+export function sheetNo(key: SheetKey): string {
+  return String(SHEETS.findIndex((s) => s.key === key) + 2).padStart(2, "0");
+}
+
 export const translations = {
-  ja: {
-    nav_now: "いま",
-    nav_career: "経歴",
-    nav_skills: "スキル",
-    nav_works: "制作物",
-    nav_writing: "書いたもの",
-    nav_personal: "人となり",
-    nav_contact: "連絡",
-    nav_reading: "読んでいるもの",
-    nav_values: "大事にしていること",
-    nav_hobbies: "趣味・関心",
-    back_home: "← トップへ",
-    resume_btn: "職務経歴書",
-    resume_long: "職務経歴書を見る / PDF",
-    hero_kicker: "Full-stack Engineer",
-    k_now: "Now",
-    h_now: "現在の取り組み",
-    k_about: "About",
-    h_about: "得意分野",
-    k_career: "Career",
-    h_career: "経歴",
-    k_skills: "Skills",
-    h_skills: "スキル",
-    k_works: "Works",
-    h_works: "制作物",
-    works_note: "個人開発・OSS・実験。掲載したいものを src/data/profile.ts に書けばここに並びます。",
-    k_writing: "Writing",
-    h_writing: "書いたもの",
-    zenn_all: "Zenn で全記事",
-    k_reading: "Reading",
-    h_reading: "読んでいるもの",
-    k_values: "Values",
-    h_values: "大事にしていること",
-    k_hobbies: "Interests",
-    h_hobbies: "趣味・関心",
-    k_personal: "Personal",
-    h_personal: "人となり",
-    personal_teaser: "価値観、趣味、読んでいるもの。仕事の話だけでは伝わらないところ。",
-    personal_cta: "人となりを見る",
-    k_contact: "Contact",
-    h_contact: "ご連絡ください",
-    open: "見る",
-    footer_note: "src/data/profile.ts を編集すれば更新されます",
-    present: "現在",
-    yearsFmt: (n: number) => `エンジニア歴 ${n}年`,
-  },
   en: {
-    nav_now: "Now",
-    nav_career: "Career",
-    nav_skills: "Skills",
-    nav_works: "Works",
-    nav_writing: "Writing",
-    nav_personal: "Personal",
-    nav_contact: "Contact",
-    nav_reading: "Reading",
-    nav_values: "Values",
-    nav_hobbies: "Interests",
-    back_home: "← Back to top",
-    resume_btn: "Résumé",
-    resume_long: "Read the résumé / PDF",
-    hero_kicker: "Full-stack Engineer",
-    k_now: "Now",
-    h_now: "What I'm doing now",
-    k_about: "About",
-    h_about: "What I do",
-    k_career: "Career",
-    h_career: "Career",
-    k_skills: "Skills",
-    h_skills: "Skills",
-    k_works: "Works",
-    h_works: "Works",
-    works_note: "Side projects, OSS and experiments. Anything listed in src/data/profile.ts lands here.",
-    k_writing: "Writing",
-    h_writing: "Writing",
-    zenn_all: "All posts on Zenn",
-    k_reading: "Reading",
-    h_reading: "What I'm reading",
-    k_values: "Values",
-    h_values: "What I value",
-    k_hobbies: "Interests",
-    h_hobbies: "Hobbies & interests",
-    k_personal: "Personal",
-    h_personal: "Beyond work",
-    personal_teaser: "Values, hobbies, what I'm reading — the side that doesn't show up in a résumé.",
-    personal_cta: "See more",
-    k_contact: "Contact",
-    h_contact: "Let's talk",
-    open: "Open",
-    footer_note: "Built from one editable data file — src/data/profile.ts",
-    present: "Present",
-    yearsFmt: (n: number) => `${n} years as an engineer`,
+    matSub: "WHAT I READ",
+    specSub: "HOW I WORK",
+    contact: "Contract work, casual chats, or just talking shop — all welcome.",
+    tags: { ft: "FULL-TIME", side: "CONTRACT", now: "CURRENT", sales: "FULL-TIME" },
+    scope: "SCOPE",
+    screenshot: "SCREENSHOT",
+    cover: "COVER",
+  },
+  ja: {
+    matSub: "読んでいるもの",
+    specSub: "働くうえで大事にしていること",
+    contact: "業務委託のご相談、カジュアル面談、技術の雑談、いずれも歓迎です。",
+    tags: { ft: "正社員", side: "業務委託", now: "現在", sales: "正社員" },
+    scope: "業務内容",
+    screenshot: "SCREENSHOT",
+    cover: "COVER",
   },
 } as const satisfies Record<Lang, Record<string, unknown>>;
 

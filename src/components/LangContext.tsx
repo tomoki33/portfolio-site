@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useMemo, useState } from "react";
 import type { Lang, Localized } from "@/lib/types";
-import { pick, translations, type Translations } from "@/lib/i18n";
+import { LANG_COOKIE, pick, translations, type Translations } from "@/lib/i18n";
 
 interface LangContextValue {
   lang: Lang;
@@ -14,18 +14,22 @@ interface LangContextValue {
 const LangContext = createContext<LangContextValue | null>(null);
 
 export function LangProvider({
-  defaultLang = "ja",
+  defaultLang = "en",
   children,
 }: {
   defaultLang?: Lang;
   children: React.ReactNode;
 }) {
-  const [lang, setLang] = useState<Lang>(defaultLang);
+  const [lang, setLangState] = useState<Lang>(defaultLang);
 
   const value = useMemo<LangContextValue>(
     () => ({
       lang,
-      setLang,
+      setLang: (next) => {
+        setLangState(next);
+        document.cookie = `${LANG_COOKIE}=${next}; path=/; max-age=31536000; samesite=lax`;
+        document.documentElement.lang = next;
+      },
       t: translations[lang],
       pick: (value) => pick(value, lang),
     }),
