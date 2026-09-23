@@ -8,6 +8,7 @@ import {
 import "./globals.css";
 import profile from "@/data/profile";
 import { pick } from "@/lib/i18n";
+import { LangProvider } from "@/components/LangContext";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -55,7 +56,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="ja"
       className={`${cormorant.variable} ${lora.variable} ${shipporiMincho.variable} ${zenOldMincho.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <LangProvider defaultLang="ja">{children}</LangProvider>
+      </body>
     </html>
   );
 }

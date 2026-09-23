@@ -3,18 +3,36 @@
 import { useLang } from "@/components/LangContext";
 import profile from "@/data/profile";
 
-const NAV = [
-  { href: "#now", key: "nav_now" as const },
-  { href: "#career", key: "nav_career" as const },
-  { href: "#skills", key: "nav_skills" as const },
-  { href: "#works", key: "nav_works" as const },
-  { href: "#writing", key: "nav_writing" as const },
-  { href: "#contact", key: "nav_contact" as const },
-];
+export interface NavItem {
+  href: string;
+  label: string;
+}
 
-export default function Header() {
+/**
+ * Shared sticky header (brand + section nav + lang toggle + résumé button).
+ * The home page uses the default nav; other pages (e.g. /about) pass their
+ * own `nav` and `brandHref` to point back at the right places.
+ */
+export default function Header({
+  brandHref = "#top",
+  nav,
+}: {
+  brandHref?: string;
+  nav?: NavItem[];
+}) {
   const { lang, setLang, t, pick } = useLang();
   const navName = pick(profile.meta.name);
+  const items: NavItem[] =
+    nav ??
+    [
+      { href: "#now", label: t.nav_now },
+      { href: "#career", label: t.nav_career },
+      { href: "#skills", label: t.nav_skills },
+      { href: "#works", label: t.nav_works },
+      { href: "#writing", label: t.nav_writing },
+      { href: "/about", label: t.nav_personal },
+      { href: "#contact", label: t.nav_contact },
+    ];
 
   return (
     <header
@@ -39,7 +57,7 @@ export default function Header() {
         }}
       >
         <a
-          href="#top"
+          href={brandHref}
           style={{
             fontFamily: "var(--font-cormorant), var(--font-shippori-mincho), serif",
             fontSize: 19,
@@ -61,9 +79,9 @@ export default function Header() {
             letterSpacing: ".04em",
           }}
         >
-          {NAV.map((n) => (
+          {items.map((n) => (
             <a key={n.href} href={n.href} style={{ color: "var(--color-neutral-700)" }}>
-              {t[n.key]}
+              {n.label}
             </a>
           ))}
         </nav>
