@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useLang } from "@/components/LangContext";
 import profile from "@/data/profile";
-import { SHEETS, sheetNo } from "@/lib/i18n";
+import { SHEETS, SHEET_TOTAL, sheetNo } from "@/lib/i18n";
 
 const LAYERS = [
   { y: 20, label: "L5 DOMAIN", tech: "Finance — securities, banking" },
@@ -25,7 +25,7 @@ export default function Home() {
       <section className="hero" data-screen-label="01 Section">
         <div className="hero-head">
           <div className="meta-row">
-            <span>01 / 09 · SECTION A–A · URAYASU, JP</span>
+            <span>01 / {SHEET_TOTAL} · SECTION A–A · URAYASU, JP</span>
             <span className="meta-links">
               {["GitHub", "Zenn", "LinkedIn"].map((label) => {
                 const l = meta.links.find((x) => x.label === label)!;
@@ -109,7 +109,7 @@ export default function Home() {
           {SHEETS.map((s) => (
             <Link key={s.key} href={s.href} className="sheet-card">
               <span className="no">
-                <span>{sheetNo(s.key)} / 09</span>
+                <span>{sheetNo(s.key)} / {SHEET_TOTAL}</span>
                 <span className="accent">{s.flag}</span>
               </span>
               <span className="title">{s.title}</span>

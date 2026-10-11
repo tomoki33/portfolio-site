@@ -22,47 +22,38 @@ export function NowSheet() {
 
 export function ReadingSheet() {
   const { pick, t } = useLang();
+  const groups = profile.reading.groups;
+  const total = groups.reduce((n, g) => n + g.items.length, 0);
+  // Book numbers run continuously across groups.
+  const starts = groups.map((_, gi) => groups.slice(0, gi).reduce((n, g) => n + g.items.length, 0));
   return (
-    <Sheet sheet="reading" sub={t.matSub}>
-      <div className="books">
-        {profile.reading.items.map((b, i) => {
-          const cover = (
-            <div className="cover">
-              {b.coverUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={b.coverUrl} alt={b.title ?? ""} />
-              ) : (
-                t.cover
-              )}
+    <Sheet sheet="reading" sub={t.matSub} extra={<span className="extra">{total} BOOKS</span>}>
+      <div className="shelf">
+        {groups.map((g, gi) => (
+          <section key={gi} className="shelf-group">
+            <div className="shelf-head">
+              <span className="label">{pick(g.label)}</span>
+              <span className="count">{String(g.items.length).padStart(2, "0")}</span>
             </div>
-          );
-          return (
-            <div key={i} className="book">
-              <span className="label">{pick(b.label)}</span>
-              {b.url ? <a href={b.url} target="_blank" rel="noreferrer">{cover}</a> : cover}
-              <span className="title">{b.placeholder ? pick({ en: "Title — Author", ja: "タイトル — 著者" }) : b.title}</span>
-              <span className="note">{b.placeholder ? pick(b.hint) : pick(b.note)}</span>
+            <div className="shelf-list">
+              {g.items.map((b, i) => {
+                const body = (
+                  <>
+                    <span className="no">B-{two(starts[gi] + i)}</span>
+                    <span className="text">
+                      <span className="title">{b.title}</span>
+                      {b.author && <span className="author">{b.author}</span>}
+                    </span>
+                  </>
+                );
+                return b.url ? (
+                  <a key={i} href={b.url} target="_blank" rel="noreferrer" className="book-row">{body}</a>
+                ) : (
+                  <div key={i} className="book-row">{body}</div>
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
-    </Sheet>
-  );
-}
-
-export function ValuesSheet() {
-  const { pick, t } = useLang();
-  return (
-    <Sheet sheet="values" sub={t.specSub}>
-      <div className="rows">
-        {profile.values.items.map((v, i) => (
-          <div key={i} className="row row-spec">
-            <span className="id">SPEC-{two(i)}</span>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <span className="title">{pick(v.title)}</span>
-              <span className="desc">{pick(v.text)}</span>
-            </div>
-          </div>
+          </section>
         ))}
       </div>
     </Sheet>

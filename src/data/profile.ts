@@ -230,6 +230,23 @@ const profile: Profile = {
   // 公開URLが無いものは url の代わりに note を書くと表示されます。
   works: [
     {
+      title: "PLATE",
+      kind: { ja: "iOS アプリ · 筋トレ × 食事", en: "iOS APP · TRAINING × NUTRITION" },
+      year: "2026",
+      problem: {
+        ja: "筋トレの記録と食事管理が別々のアプリで、トレーニングした日もしない日も同じカロリー目標のまま。",
+        en: "Training logs and food tracking live in separate apps, so the calorie target stays the same whether you trained legs or rested.",
+      },
+      approach: {
+        ja: "週の合計カロリーをトレの予定に合わせて日ごとに配分し、実際のトレ内容で当日の PFC 目標を自動で組み替える。食事は写真・文章から AI が食品と量を推定し、栄養値は日本食品標準成分表から計算。",
+        en: "Spreads a weekly calorie budget across days by training plan and re-balances today's PFC targets from the session you actually logged. Meals can be logged from a photo or text — AI identifies foods and portions, and nutrition is computed from Japan's standard food composition tables.",
+      },
+      image: "/works/plate.jpg",
+      url: "https://plate-site-ashen.vercel.app",
+      urlLabel: "LP",
+      stack: ["Expo", "React Native", "TypeScript", "SQLite", "Drizzle", "Supabase", "Gemini", "RevenueCat"],
+    },
+    {
       title: "ReSwing",
       kind: { ja: "PWA · ゴルフ · AI", en: "PWA · GOLF · AI" },
       year: "2026",
@@ -310,41 +327,112 @@ const profile: Profile = {
     ],
   },
 
-  // ── 読んでいるもの ───────────────────────────────────
-  // title / note に加えて、url（本のリンク）・coverUrl（表紙画像。外部URL
-  // でも public/covers/xxx.jpg のようなローカルパスでもOK）を書けます。
+  // ── 読んだ本 ─────────────────────────────────────
+  // ジャンルごとのタイトル一覧。author・url は任意。番号は上から通しで振られます。
   reading: {
     note: {
-      ja: "読んでいるもの、考えていること。技術書だけではなく。",
-      en: "What I'm reading and thinking about — not only technical books.",
+      ja: "読んできた本。技術書だけではなく。",
+      en: "Books I've read — not only technical ones.",
     },
-    items: [
-      { placeholder: true, label: { ja: "いま読んでいる", en: "NOW READING" }, hint: { ja: "なぜ今これか。", en: "Why this, now." } },
-      { placeholder: true, label: { ja: "何度も戻る一冊", en: "KEEP RETURNING TO" }, hint: { ja: "何が変わったか。", en: "What it changed." } },
-      { placeholder: true, label: { ja: "技術以外", en: "BEYOND TECH" }, hint: { ja: "スタックの外側。", en: "Outside the stack." } },
-    ],
-  },
-
-  // ── 大事にしていること ─────────────────────────────
-  // 仕事に対する価値観・スタンス。title は短く、text で少し説明する形。
-  // placeholder ではなく最初から3つ埋めてあるので、内容を書き換えてください。
-  values: {
-    note: {
-      ja: "働くうえで大事にしていること。",
-      en: "What guides how I work.",
-    },
-    items: [
+    groups: [
       {
-        title: { ja: "コードの前に業務", en: "Domain before code" },
-        text: { ja: "何を作るかの前に、業務が実際にどう回っているかを理解する。営業時代に身についた感覚です。", en: "Understand how the business actually runs before deciding what to build. Sales taught me that." },
+        label: { ja: "技術", en: "ENGINEERING" },
+        items: [
+          { title: "システム設計の面接試験", author: "アレックス・シュウ" },
+          { title: "Webを支える技術", author: "山本陽平" },
+          { title: "良いコード／悪いコードで学ぶ設計入門", author: "仙塲大也" },
+          { title: "システム開発と「具体と抽象」", author: "細谷功" },
+          { title: "AWSコンテナ設計・構築［本格］入門", author: "新井雅也・馬勝淳史" },
+          { title: "AWS 開発を《成功》させる技術", author: "高岡将・佐々木亨" },
+          { title: "プロフェッショナルAI駆動開発", author: "松本淳太郎 ほか" },
+          { title: "世界一流エンジニアの思考法", author: "牛尾剛" },
+        ],
       },
       {
-        title: { ja: "最後まで持つ", en: "Own it end to end" },
-        text: { ja: "スキーマから本番まで通し、リリース後に起きることまで引き受ける。", en: "Carry a feature from schema to production and stay for what happens after launch." },
+        label: { ja: "キャリア・仕事", en: "CAREER & WORK" },
+        items: [
+          { title: "CAREER SKILLS ソフトウェア開発者の完全キャリアガイド", author: "ジョン・ソンメズ" },
+          { title: "ITエンジニアの転職学", author: "赤川朗" },
+          { title: "21世紀最強の職業 Web系エンジニアになろう", author: "勝又健太" },
+          { title: "替えがきかない人材になるための専門性の身につけ方", author: "国分峰樹" },
+          { title: "働き方の科学", author: "佐藤豪竜" },
+          { title: "The Long Game", author: "ドリー・クラーク" },
+          { title: "LIFE SHIFT", author: "リンダ・グラットン・アンドリュー・スコット" },
+          { title: "LIFE SHIFT 2", author: "アンドリュー・スコット・リンダ・グラットン" },
+          { title: "人生の経営戦略", author: "山口周" },
+          { title: "起業のすすめ", author: "佐々木紀彦" },
+          { title: "世界の起業家が学んでいるMBA経営理論の必読書50冊を1冊にまとめてみた", author: "永井孝尚" },
+        ],
       },
       {
-        title: { ja: "測ってから最適化", en: "Measure, then optimize" },
-        text: { ja: "評価とコストは後付けではなく、設計の一部として扱う。", en: "Evaluation and cost are part of the design, not an afterthought." },
+        label: { ja: "思考・言葉", en: "THINKING & LANGUAGE" },
+        items: [
+          { title: "アウトプット思考", author: "内田和成" },
+          { title: "まっすぐ考える", author: "ダリウス・フォルー" },
+          { title: "脳の外で考える", author: "アニー・マーフィー・ポール" },
+          { title: "HIDDEN POTENTIAL 可能性の科学", author: "アダム・グラント" },
+          { title: "瞬時に「言語化できる人」が、うまくいく", author: "荒木俊哉" },
+          { title: "「何回説明しても伝わらない」はなぜ起こるのか？", author: "今井むつみ" },
+          { title: "言語の力", author: "ビオリカ・マリアン" },
+          { title: "Think Fast, Talk Smart", author: "マット・エイブラハムズ" },
+          { title: "FACTFULNESS", author: "ハンス・ロスリング ほか" },
+          { title: "世界の「頭のいい人」がやっていることを1冊にまとめてみた", author: "中野信子" },
+        ],
+      },
+      {
+        label: { ja: "お金・経済・教養", en: "MONEY & ECONOMY" },
+        items: [
+          { title: "DIE WITH ZERO", author: "ビル・パーキンス" },
+          { title: "SAME AS EVER", author: "モーガン・ハウセル" },
+          { title: "The Algebra of Wealth 富の方程式", author: "スコット・ギャロウェイ" },
+          { title: "きみのお金は誰のため", author: "田内学" },
+          { title: "僕がウォール街で学んだ勝利の投資術", author: "高橋ダン" },
+          { title: "決算書の比較図鑑", author: "矢部謙介" },
+          { title: "行動経済学が最強の学問である", author: "相良奈美香" },
+          { title: "世界経済地図", author: "すあし社長" },
+          { title: "地政学が最強の教養である", author: "田村耕太郎" },
+          { title: "今さら聞けない 教養の超基本", author: "上田紀行 監修" },
+        ],
+      },
+      {
+        label: { ja: "脳・心・からだ", en: "MIND & BODY" },
+        items: [
+          { title: "運動脳", author: "アンデシュ・ハンセン" },
+          { title: "筋肉が全て", author: "ガブリエル・ライオン" },
+          { title: "不夜脳", author: "東島威史" },
+          { title: "「脳にいいこと」だけをやりなさい！", author: "マーシー・シャイモフ" },
+          { title: "科学者たちが語る食欲", author: "デイヴィッド・ローベンハイマー・スティーヴン・J・シンプソン" },
+          { title: "瞬間ストレスリセット", author: "ジェニファー・L・タイツ" },
+          { title: "CALM YOUR MIND", author: "クリス・ベイリー" },
+          { title: "Chatter", author: "イーサン・クロス" },
+          { title: "「繊細さん」の本", author: "武田友紀" },
+          { title: "「繊細さん」の4つの才能", author: "コートニー・マルケサーニ" },
+          { title: "「静かな人」の戦略書", author: "ジル・チャン" },
+          { title: "人は、なぜさみしさに苦しむのか？", author: "中野信子" },
+        ],
+      },
+      {
+        label: { ja: "生き方", en: "HOW TO LIVE" },
+        items: [
+          { title: "YOUR TIME", author: "鈴木祐" },
+          { title: "不完全主義", author: "オリバー・バークマン" },
+          { title: "グッド・ライフ", author: "ロバート・ウォールディンガー・マーク・シュルツ" },
+          { title: "一度しかない人生を最高の人生にする方法", author: "スコット・アラン" },
+          { title: "このプリン、いま食べるか？ ガマンするか？", author: "柿内尚文" },
+          { title: "やり抜く力 GRIT", author: "アンジェラ・ダックワース" },
+          { title: "幸せになる勇気", author: "岸見一郎・古賀史健" },
+          { title: "小さいことにくよくよするな！", author: "リチャード・カールソン" },
+          { title: "サレンダー", author: "マイケル・A・シンガー" },
+          { title: "スマホ時代の哲学", author: "谷川嘉浩" },
+          { title: "夢をかなえるゾウ2", author: "水野敬也" },
+          { title: "教養としてのコーヒー", author: "井崎英典" },
+        ],
+      },
+      {
+        label: { ja: "小説", en: "FICTION" },
+        items: [
+          { title: "旅のラゴス", author: "筒井康隆" },
+        ],
       },
     ],
   },
@@ -361,25 +449,21 @@ const profile: Profile = {
       {
         drawing: "surf",
         title: { ja: "サーフィン", en: "Surfing" },
-        text: { ja: "波を読んで、乗ると決める。", en: "Read the conditions, then commit." },
         specs: [{ label: "HOME BREAK", value: "" }, { label: "BOARD", value: "" }],
       },
       {
         drawing: "gym",
         title: { ja: "筋トレ", en: "Training" },
-        text: { ja: "少しずつ負荷を上げて、記録する。", en: "Progressive overload, logged." },
         specs: [{ label: "SPLIT", value: "" }, { label: "BIG 3 TOTAL", value: "" }],
       },
       {
         drawing: "golf",
         title: { ja: "ゴルフ", en: "Golf" },
-        text: { ja: "小さな調整を積み重ねる長いゲーム。", en: "A long game of small adjustments." },
         specs: [{ label: "AVERAGE", value: "" }, { label: "BEST", value: "" }],
       },
       {
         drawing: "coffee",
         title: { ja: "コーヒー", en: "Coffee" },
-        text: { ja: "比率・挽き目・湯温を詰める。", en: "Dial in ratio, grind and temperature." },
         specs: [{ label: "METHOD", value: "" }, { label: "BEANS", value: "" }],
       },
     ],

@@ -85,7 +85,6 @@ export default function InterestsSheet() {
             </svg>
             <div className="cap">
               <span className="title">{pick(h.title)}</span>
-              <span className="text">{pick(h.text)}</span>
             </div>
             <div className="specs">
               {h.specs.map((s) => (

@@ -151,7 +151,7 @@ img { max-width: 100%; display: block; }
   font: 400 10.5px var(--mono); letter-spacing: .06em; color: var(--faint);
 }
 
-/* ---------- Rows (now / notes / values / contact) ---------- */
+/* ---------- Rows (now / notes / contact) ---------- */
 .rows { display: flex; flex-direction: column; }
 .row { display: grid; gap: 16px; padding: 20px 0; border-top: 1px solid var(--rule); align-items: baseline; }
 .row .no { font: 400 12px var(--mono); color: var(--faint); }
@@ -160,10 +160,6 @@ img { max-width: 100%; display: block; }
 .row-note { grid-template-columns: 72px minmax(0, 1fr) auto; gap: 20px; }
 .row-note .no, .row-note .date { font: 400 11px var(--mono); color: var(--faint); }
 .row-note .title { font-size: 17px; line-height: 1.5; }
-.row-spec { grid-template-columns: 96px minmax(0, 1fr); gap: 20px; padding: 24px 0; }
-.row-spec .id { font: 400 11px var(--mono); letter-spacing: .06em; color: var(--accent); }
-.row-spec .title { font-weight: 300; font-size: 24px; letter-spacing: -.02em; }
-.row-spec .desc { font-size: 15px; line-height: 1.7; color: var(--muted); max-width: 560px; text-wrap: pretty; }
 .row-link { grid-template-columns: 120px minmax(0, 1fr) auto; gap: 20px; padding: 18px 0; }
 .row-link .k { font: 400 10.5px var(--mono); letter-spacing: .08em; color: var(--faint); }
 .row-link .v { font-size: 17px; }
@@ -236,16 +232,21 @@ a.figure-img:hover img { transform: scale(1.02); }
 .figure .tags { margin-top: 4px; }
 
 /* ---------- Materials ---------- */
-.books { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 32px; }
-.book { display: flex; flex-direction: column; gap: 12px; }
-.book .label { font: 400 10.5px var(--mono); letter-spacing: .08em; color: var(--faint); }
-.book .cover {
-  aspect-ratio: 2 / 3; max-width: 150px; border: 1px solid var(--ink); background: var(--stripe);
-  display: grid; place-items: center; overflow: hidden; font: 400 10px var(--mono); color: var(--faint);
+.shelf { display: flex; flex-direction: column; gap: 40px; }
+.shelf-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 10px; border-bottom: 1px solid var(--ink);
 }
-.book .cover img { width: 100%; height: 100%; object-fit: cover; }
-.book .title { font-size: 16px; }
-.book .note { font-size: 13.5px; line-height: 1.6; color: var(--muted); }
+.shelf-head .label { font-size: 15px; }
+.shelf-head .count { font: 400 11px var(--mono); color: var(--faint); }
+.shelf-list { column-count: 2; column-gap: 32px; }
+.book-row {
+  display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; align-items: baseline;
+  padding: 9px 0; border-bottom: 1px solid var(--rule); break-inside: avoid;
+}
+.book-row .no { font: 400 10.5px var(--mono); color: var(--faint); }
+.book-row .title { font-size: 14.5px; line-height: 1.5; margin-right: 10px; }
+.book-row .author { display: inline-block; max-width: 100%; font-size: 11px; color: var(--faint); }
 
 /* ---------- Details ---------- */
 .details { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); border-top: 1px solid var(--ink); border-left: 1px solid var(--ink); }
@@ -254,7 +255,6 @@ a.figure-img:hover img { transform: scale(1.02); }
 .detail svg { display: block; width: 100%; height: auto; font-family: var(--mono); }
 .detail .cap { display: flex; flex-direction: column; gap: 6px; }
 .detail .title { font-weight: 300; font-size: 24px; letter-spacing: -.02em; }
-.detail .text { font-size: 14px; line-height: 1.6; color: var(--muted); }
 .specs { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); font: 400 10px var(--mono); letter-spacing: .08em; }
 .specs div { padding: 10px 0 0; display: flex; flex-direction: column; gap: 4px; }
 .specs div + div { padding-left: 14px; border-left: 1px solid var(--rule); }
@@ -288,7 +288,7 @@ a.figure-img:hover img { transform: scale(1.02); }
   .acc-panel { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .row-note { grid-template-columns: 48px minmax(0, 1fr); }
   .row-note .date { grid-column: 2; }
-  .row-spec { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .shelf-list { column-count: 1; }
   .row-link { grid-template-columns: 90px minmax(0, 1fr) auto; gap: 12px; }
   .prevnext .title { font-size: 18px; }
   .timeline .pivot-label { font-size: 8.5px; }

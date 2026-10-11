@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { SHEETS, sheetNo, type SheetKey } from "@/lib/i18n";
+import { SHEETS, SHEET_TOTAL, sheetNo, type SheetKey } from "@/lib/i18n";
 
 /**
- * One numbered drawing sheet: a 220px label column (NN / 09, title, sub-label)
+ * One numbered drawing sheet: a 220px label column (NN / total, title, sub-label)
  * next to the content, followed by the prev / next bar.
  */
 export default function Sheet({
@@ -31,7 +31,7 @@ export default function Sheet({
     <>
       <section className="sheet" data-screen-label={`${sheetNo(sheet)} ${s.title}`}>
         <div className="sheet-label">
-          <span className="no">{sheetNo(sheet)} / 09</span>
+          <span className="no">{sheetNo(sheet)} / {SHEET_TOTAL}</span>
           <h2>{s.title}</h2>
           <span className={subAccent ? "sub accent" : "sub"}>{sub ?? s.sub.en}</span>
           {extra}

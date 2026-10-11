@@ -82,21 +82,10 @@ export interface ArticleItem {
 }
 
 export interface ReadingItem {
-  placeholder?: boolean;
-  /** Mono label above the cover, e.g. "NOW READING". */
-  label?: Localized;
-  title?: string;
-  note?: Localized;
-  hint?: Localized;
-  /** Link to the book (publisher page, store, Zenn book, etc.) */
+  title: string;
+  author?: string;
+  /** Link to the book (publisher page, store, etc.) */
   url?: string;
-  /** Cover image — a full URL, or a local path such as "/covers/xxx.jpg" */
-  coverUrl?: string;
-}
-
-export interface ValueItem {
-  title: Localized;
-  text: Localized;
 }
 
 export type HobbyDrawing = "surf" | "gym" | "golf" | "coffee";
@@ -104,7 +93,6 @@ export type HobbyDrawing = "surf" | "gym" | "golf" | "coffee";
 export interface HobbyItem {
   drawing: HobbyDrawing;
   title: Localized;
-  text: Localized;
   /** Two-column spec table; value "" renders as an em dash. */
   specs: { label: string; value: Localized }[];
 }
@@ -158,11 +146,7 @@ export interface Profile {
   };
   reading: {
     note: Localized;
-    items: ReadingItem[];
-  };
-  values: {
-    note: Localized;
-    items: ValueItem[];
+    groups: { label: Localized; items: ReadingItem[] }[];
   };
   hobbies: {
     note: Localized;

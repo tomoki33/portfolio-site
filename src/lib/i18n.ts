@@ -23,17 +23,19 @@ export const LANG_COOKIE = "lang";
 export const SHEETS = [
   { key: "now", href: "/now", title: "In progress", sub: { en: "NOW", ja: "いま" }, preview: { en: "What I am building this quarter.", ja: "いま取り組んでいること。" }, flag: "★ LIVE" },
   { key: "career", href: "/career", title: "Elevation", sub: { en: "CAREER", ja: "経歴" }, preview: { en: "Retail sales → full-stack engineering.", ja: "営業 → フルスタックエンジニア。" }, flag: "" },
-  { key: "works", href: "/works", title: "Figures", sub: { en: "WORKS", ja: "制作物" }, preview: { en: "ReSwing, ReSurf, Morning Bytes, Karada Log.", ja: "ReSwing・ReSurf・Morning Bytes・からだログ。" }, flag: "" },
+  { key: "works", href: "/works", title: "Figures", sub: { en: "WORKS", ja: "制作物" }, preview: { en: "PLATE, ReSwing, ReSurf, Morning Bytes, Karada Log.", ja: "PLATE・ReSwing・ReSurf・Morning Bytes・からだログ。" }, flag: "" },
   { key: "writing", href: "/writing", title: "Notes", sub: { en: "WRITING", ja: "書いたもの" }, preview: { en: "Articles on Zenn.", ja: "Zenn の記事。" }, flag: "" },
-  { key: "reading", href: "/reading", title: "Materials", sub: { en: "READING", ja: "読んでいるもの" }, preview: { en: "Books that shaped how I work.", ja: "考え方をつくった本。" }, flag: "" },
-  { key: "values", href: "/values", title: "Specifications", sub: { en: "VALUES", ja: "価値観" }, preview: { en: "How I work, in three specs.", ja: "働き方を3つの仕様で。" }, flag: "" },
+  { key: "reading", href: "/reading", title: "Materials", sub: { en: "READING", ja: "読んでいるもの" }, preview: { en: "Books I have read.", ja: "読んできた本。" }, flag: "" },
   { key: "interests", href: "/interests", title: "Details", sub: { en: "INTERESTS", ja: "趣味・関心" }, preview: { en: "Surf, lift, golf, coffee.", ja: "サーフィン・筋トレ・ゴルフ・コーヒー。" }, flag: "" },
   { key: "contact", href: "/contact", title: "Contact", sub: { en: "CONTACT", ja: "連絡" }, preview: { en: "Contract work, chats, shop talk.", ja: "業務委託・カジュアル面談など。" }, flag: "" },
 ] as const;
 
 export type SheetKey = (typeof SHEETS)[number]["key"];
 
-export const NAV_KEYS: SheetKey[] = ["career", "works", "writing", "reading", "values", "contact"];
+export const NAV_KEYS: SheetKey[] = ["career", "works", "writing", "reading", "interests", "contact"];
+
+/** Total sheet count including home, e.g. "08". */
+export const SHEET_TOTAL = String(SHEETS.length + 1).padStart(2, "0");
 
 /** "02" for index 0 (home is sheet 01). */
 export function sheetNo(key: SheetKey): string {
@@ -43,21 +45,17 @@ export function sheetNo(key: SheetKey): string {
 export const translations = {
   en: {
     matSub: "WHAT I READ",
-    specSub: "HOW I WORK",
     contact: "Contract work, casual chats, or just talking shop — all welcome.",
     tags: { ft: "FULL-TIME", side: "CONTRACT", now: "CURRENT", sales: "FULL-TIME" },
     scope: "SCOPE",
     screenshot: "SCREENSHOT",
-    cover: "COVER",
   },
   ja: {
     matSub: "読んでいるもの",
-    specSub: "働くうえで大事にしていること",
     contact: "業務委託のご相談、カジュアル面談、技術の雑談、いずれも歓迎です。",
     tags: { ft: "正社員", side: "業務委託", now: "現在", sales: "正社員" },
     scope: "業務内容",
     screenshot: "SCREENSHOT",
-    cover: "COVER",
   },
 } as const satisfies Record<Lang, Record<string, unknown>>;
 
